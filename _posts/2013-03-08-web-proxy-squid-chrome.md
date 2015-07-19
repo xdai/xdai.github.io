@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Secure web proxy with squid and chrome (a.k.a. A way to break the GFW)
-date:   2013-05-11
+date:   2013-03-08
 categories: "Three Things"
 ---
 
