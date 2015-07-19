@@ -1,0 +1,88 @@
+---
+layout: post
+title:  "用objdump查看汇编代码和C的对应关系"
+date:   2012-05-11
+categories: "Three Things"
+---
+objdump提供下面几个有用的选项：
+
+> -S
+>
+> –source
+>
+> Display source code intermixed with disassembly, if possible.  Implies -d.
+
+> -l
+>
+> –line-numbers
+>
+> Label the display (using debugging information) with the filename and
+> source line numbers corresponding to the object code or relocs shown.
+> Only useful with -d, -D, or -r.
+
+只要在编译时加入gcc选项`-g`，生成的目标代码即可使用`objdump -S -l`来显
+示汇编代码与C之间的对应关系：
+
+~~~
+$ cat zero_checksum.c
+#include <stdio.h>
+
+int
+main(int argc, char **argv)
+{
+    int i;
+    unsigned char sum = 0;
+    signed char ssum;
+    for (i=1; i<argc; i++) {
+        sum += (unsigned char)strtol(argv[i], NULL, 0);
+        printf("%02hhx ", sum);
+    }
+
+    ssum = 0 - sum;
+    printf("%02hhx", ssum);
+
+    return 0;
+}
+$ /root/cc/bin/arm-linux-gcc -g zero_checksum.c -c
+$ /root/cc/bin/arm-linux-objdump -Sl zero_checksum.o | head -40
+
+zero_checksum.o:     file format elf32-littlearm
+
+Disassembly of section .text:
+
+00000000 <main>:
+main():
+/home/ender/src/tmp/zero_checksum.c:5
+#include <stdio.h>
+
+int
+main(int argc, char **argv)
+{
+   0:   e1a0c00d        mov     ip, sp
+   4:   e92dd800        stmdb   sp!, {fp, ip, lr, pc}
+   8:   e24cb004        sub     fp, ip, #4      ; 0x4
+   c:   e24dd010        sub     sp, sp, #16     ; 0x10
+  10:   e50b0010        str     r0, [fp, #-16]
+  14:   e50b1014        str     r1, [fp, #-20]
+/home/ender/src/tmp/zero_checksum.c:7
+        int i;
+        unsigned char sum = 0;
+  18:   e3a03000        mov     r3, #0  ; 0x0
+  1c:   e54b3019        strb    r3, [fp, #-25]
+/home/ender/src/tmp/zero_checksum.c:9
+        signed char ssum;
+        for (i=1; i<argc; i++) {
+  20:   e3a03001        mov     r3, #1  ; 0x1
+  24:   e50b3018        str     r3, [fp, #-24]
+  28:   e51b2018        ldr     r2, [fp, #-24]
+  2c:   e51b3010        ldr     r3, [fp, #-16]
+  30:   e1520003        cmp     r2, r3
+  34:   aa000020        bge     bc <.text+0xbc>
+/home/ender/src/tmp/zero_checksum.c:10
+            sum += (unsigned char)strtol(argv[i], NULL, 0);
+  38:   e51b3018        ldr     r3, [fp, #-24]
+  3c:   e1a02103        mov     r2, r3, lsl #2
+  40:   e51b3014        ldr     r3, [fp, #-20]
+  44:   e0823003        add     r3, r2, r3
+  48:   e5930000        ldr     r0, [r3]
+~~~
