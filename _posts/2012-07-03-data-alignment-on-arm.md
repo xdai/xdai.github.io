@@ -6,36 +6,7 @@ categories: "Three Things"
 ---
 First of all let’s check the demo code below:
 
-~~~
-$ cat tst.c
-#include <stdio.h>
-#include <stdint.h>
-
-#define mac2blong(x) ( ((x) >> 24) |
-                       ((x) << 24) |
-                       (((x) & 0x00ff0000) >> 8) |
-                       (((x) & 0x0000ff00) << 8) )
-
-typedef struct READ_CAPACITY {
-    uint32_t TotalBlocks;
-    uint32_t BlockSize;
-} READ_CAPACITY;
-
-uint8_t ReqBuffer[100];
-
-int main(void)
-{
-    printf("0x%x:0x%xn", mac2blong(0x0800), mac2blong(0x0239));
-
-    READ_CAPACITY *ScsiReadCap = (READ_CAPACITY *)ReqBuffer;
-    ScsiReadCap->BlockSize   = mac2blong(0x0800);
-    ScsiReadCap->TotalBlocks = mac2blong(0x0239);
-    printf("0x%x:0x%xn", ScsiReadCap->BlockSize,
-    ScsiReadCap->TotalBlocks);
-
-    return 0;
-}
-~~~
+{% gist xdai/14a18c3781deda8a06fb %}
 
 Compile and run on ARM926EJ-S:
 
@@ -58,16 +29,10 @@ $ arm-linux-nm tst | grep ReqBuffer
 ~~~
 
 So, it’s not word-aligned. What if we force it to be aligned on word
-boundary?
+boundary? After modifying line 14 into `uint8_t ReqBuffer[100]
+__attribute__ ((aligned (4)));`:
 
 ~~~
-$ cat tst.c
-...
-...
-uint8_t ReqBuffer[100] __attribute__ ((aligned (4)));
-...
-...
-
 $ arm-linux-gcc -o tst tst.c
 $ arm-linux-nm tst | grep ReqBuffer
 00010744 B ReqBuffer
@@ -102,31 +67,9 @@ ARMv5 based, and in “A2.8 Unaligned data access” it said:
 To understand first two of the statements, it would be better to try
 it out.
 
+{% gist xdai/7a4025d81f7d4ce42eea %}
+
 ~~~
-$ cat align.c
-#include <stdio.h>
-#include <stdint.h>
-#include <string.h>
-
-uint8_t data[8] __attribute__ ((aligned (4)));
-
-int main(void)
-{
-    int i;
-    uint32_t *ptr;
-
-    for (i=0; i<8; i++) {
-        memset(data, 0, sizeof(data));
-        ptr = (uint32_t*)(data + i);
-        *ptr = 0x11223344;
-        printf("%p %02x %02x %02x %02x %02x %02x %02x %02x %p %08xn",
-               data, data[7], data[6], data[5], data[4], data[3],
-               data[2], data[1], data[0], ptr, *ptr);
-    }
-
-    return 0;
-}
-
 $ arm-linux-gcc -o align align.c
 
 # ./align
