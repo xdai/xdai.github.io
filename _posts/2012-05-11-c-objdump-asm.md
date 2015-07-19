@@ -23,28 +23,11 @@ objdump提供下面几个有用的选项：
 只要在编译时加入gcc选项`-g`，生成的目标代码即可使用`objdump -S -l`来显
 示汇编代码与C之间的对应关系：
 
+{% gist xdai/44e408b71188b6012eb6 zero_checksum.c %}
+
 ~~~
-$ cat zero_checksum.c
-#include <stdio.h>
-
-int
-main(int argc, char **argv)
-{
-    int i;
-    unsigned char sum = 0;
-    signed char ssum;
-    for (i=1; i<argc; i++) {
-        sum += (unsigned char)strtol(argv[i], NULL, 0);
-        printf("%02hhx ", sum);
-    }
-
-    ssum = 0 - sum;
-    printf("%02hhx", ssum);
-
-    return 0;
-}
-$ /root/cc/bin/arm-linux-gcc -g zero_checksum.c -c
-$ /root/cc/bin/arm-linux-objdump -Sl zero_checksum.o | head -40
+$ arm-linux-gcc -g zero_checksum.c -c
+$ arm-linux-objdump -Sl zero_checksum.o | head -40
 
 zero_checksum.o:     file format elf32-littlearm
 
