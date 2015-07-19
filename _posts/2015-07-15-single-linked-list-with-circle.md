@@ -66,7 +66,8 @@ Let `A` be the head of the list, `B` be the beginning point of the
 circle, and `C` be the catch up point of `slow` and `fast`, then the
 list looks like this:
 
-![](https://farm1.staticflickr.com/350/19732022985_57c074fb47.jpg)
+![](https://farm1.staticflickr.com/350/19732022985_57c074fb47.jpg){:
+ .center-image}
 
 If we choose `m=2` and `n=1`, solve the equation above we can get
 `l+r=(p-2q)c`. Let `α=p-2q`, then `l+r=αc`, `l=αc-r=(α-1)c+k`. Now we

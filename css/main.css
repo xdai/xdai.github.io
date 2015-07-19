@@ -237,6 +237,11 @@ a:visited { color: #205caa; }
   overflow:auto;
 }
 
+.post .center-image {
+  margin: 0 auto;
+  display: block;
+}
+
 .post code { padding: 1px 5px; }
 
 .post ul,

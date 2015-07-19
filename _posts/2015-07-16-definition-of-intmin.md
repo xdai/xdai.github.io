@@ -37,7 +37,8 @@ minus operator `-` and `integer constant` `2147483648`. To be more
 clear, the AST (Abstract Syntax Tree) of `-2147483648` should be (A)
 below instead of (B).
 
-![](https://farm1.staticflickr.com/494/19736059105_187147883b_m.jpg)
+![](https://farm1.staticflickr.com/494/19736059105_187147883b_m.jpg){:
+ .center-image}
 
 Now what do we have? An `integer constant` `2147483648`. This looks
 suspicious as it is bigger than `INT_MAX` and can not be represented
