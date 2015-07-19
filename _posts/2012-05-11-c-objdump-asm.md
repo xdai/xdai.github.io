@@ -1,10 +1,15 @@
 ---
 layout: post
-title:  "用objdump查看汇编代码和C的对应关系"
+title:  Get assembly / C code map with objdump
 date:   2012-05-11
 categories: "Three Things"
 ---
-objdump提供下面几个有用的选项：
+
+We can use `objdump` to disassamble a binary executable. Sometimes it
+would be handy if we can get a map between the assambly and C source
+code, which enables us to quickly locate the assembly of a specific C
+block. `-S` and `-l` flags of `objdump` provide some means to archive
+that.
 
 > -S
 >
@@ -20,8 +25,9 @@ objdump提供下面几个有用的选项：
 > source line numbers corresponding to the object code or relocs shown.
 > Only useful with -d, -D, or -r.
 
-只要在编译时加入gcc选项`-g`，生成的目标代码即可使用`objdump -S -l`来显
-示汇编代码与C之间的对应关系：
+As long as the application is compiled with `gcc -g`, we can use
+`objdump -S -l` to disassemble the application binary and get the map
+we want.
 
 {% gist xdai/44e408b71188b6012eb6 zero_checksum.c %}
 
