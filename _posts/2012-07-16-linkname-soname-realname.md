@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "linkname, soname and realname"
 date:   2012-07-16
 categories: "Three Things"

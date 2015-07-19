@@ -10,3 +10,13 @@ github_username:  xdai
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+# Front Matter defaults
+defaults:
+  -
+    scope:
+      path: ""
+      type: "post"
+    values:
+      layout: "post"
+      author: "Ender Dai"

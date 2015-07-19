@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "Data alignment on ARM"
 date:   2012-07-03
 categories: "Three Things"

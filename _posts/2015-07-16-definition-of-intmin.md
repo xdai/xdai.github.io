@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  Definition of INT_MIN
 date:   2015-07-16 00:52
 categories: "Three Things"

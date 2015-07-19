@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  Been HACKED!
 date:   2013-09-07
 categories: "Blah Blah"

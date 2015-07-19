@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  Single linked list with circle
 date:   2015-07-15 17:05
 categories: "Three Things"

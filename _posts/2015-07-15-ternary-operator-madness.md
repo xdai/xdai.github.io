@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  Ternary operator madness
 date:   2015-07-15
 categories: "Three Things"

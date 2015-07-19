@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  Get assembly / C code map with objdump
 date:   2012-05-11
 categories: "Three Things"
