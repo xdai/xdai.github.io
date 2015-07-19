@@ -6,7 +6,7 @@ categories: "Three Things"
 ---
 First of all let’s check the demo code below:
 
-{% gist xdai/14a18c3781deda8a06fb %}
+{% gist xdai/14a18c3781deda8a06fb tst.c %}
 
 Compile and run on ARM926EJ-S:
 
@@ -67,7 +67,7 @@ ARMv5 based, and in “A2.8 Unaligned data access” it said:
 To understand first two of the statements, it would be better to try
 it out.
 
-{% gist xdai/7a4025d81f7d4ce42eea %}
+{% gist xdai/14a18c3781deda8a06fb align.c %}
 
 ~~~
 $ arm-linux-gcc -o align align.c
