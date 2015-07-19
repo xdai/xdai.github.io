@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Data alignment on ARM"
-date:   2012-05-11
+date:   2012-07-03
 categories: "Three Things"
 ---
 First of all let’s check the demo code below:
