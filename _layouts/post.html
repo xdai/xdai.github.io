@@ -32,3 +32,17 @@ layout: default
   </p>
 
 </div>
+
+<div class="pager">
+  {% if page.next != nil %}
+  <a class="next" href={{page.next.url}}>
+    {{page.next.title | truncate: 30, "..."}}
+  </a>
+  {% endif %}
+
+  {% if page.previous != nil %}
+  <a class="prev" href={{page.previous.url}}>
+    {{page.previous.title | truncate: 30, "..."}}
+  </a>
+  {% endif %}
+</div>

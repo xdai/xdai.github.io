@@ -188,6 +188,32 @@ a:visited { color: #205caa; }
     color: #FFF;
 }
 
+.pager {
+    font-family: icon_font;
+    color: #2a7ae2;
+    margin-top: 20px;
+}
+
+.pager a:hover {
+    text-decoration: none;
+}
+
+.pager a.prev {
+    float: right;
+}
+
+.pager a.prev:after {
+    content: '\e80d';
+}
+
+.pager a.next {
+    float: left;
+}
+
+.pager a.next:before {
+    content: '\e80c';
+}
+
 /* Page Content styles */
 /* ----------------------------------------------------------*/
 
