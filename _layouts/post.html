@@ -12,4 +12,23 @@ layout: default
   {{ content }}
   </article>
 
+  <!--- Categories and Tags --->
+  <p class="classification">
+    {% if page.categories != empty %}
+    <span class="categories">
+      {% for cat in page.categories %}
+      <a href="/categories/#{{cat}}">{{cat}}</a>
+      {% endfor %}
+    </span>
+    {% endif %}
+
+    {% if page.tags != empty %}
+    <span class="tags">
+      {% for tag in page.tags %}
+      <a href="/tags/#{{tag}}">{{tag}}</a>
+      {% endfor %}
+    </span>
+    {% endif %}
+  </p>
+
 </div>

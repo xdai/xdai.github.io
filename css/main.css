@@ -73,6 +73,17 @@ a:visited { color: #205caa; }
     letter-spacing: -.5px;
 }
 
+.site-nav .rss {
+    margin-left: 20px;
+    color: #727272;
+    letter-spacing: -.5px;
+    font-family: icon_font;
+}
+
+.site-nav .rss:before {
+    content: '\e80a';
+}
+
 /* Site footer */
 
 .site-footer {
@@ -131,6 +142,51 @@ a:visited { color: #205caa; }
     top: 3px;
 }
 
+/* Pagination styles */
+/* ----------------------------------------------------------*/
+
+.pagination {
+    font-family: 'icon_font';
+    font-size: 24px;
+    text-align:center;
+}
+
+.pagination .page_number {
+    font-size: 16px;
+}
+
+.pagination .previous:before {
+    content: '\e808';
+}
+
+.pagination .next:after {
+    content: '\e809';
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 4px;
+    width:36px;
+    height:36px;
+    line-height:36px;
+}
+
+.pagination span {
+    color: gray;
+}
+
+.pagination a {
+    color: #2a7ae2;
+}
+
+.pagination a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    border-radius:50%;
+    background-color: #2a7ae2;
+    color: #FFF;
+}
 
 /* Page Content styles */
 /* ----------------------------------------------------------*/
@@ -251,6 +307,55 @@ a:visited { color: #205caa; }
     padding-left: 0;
 }
 
+/* Categories and Tags */
+/* ----------------------------------------------------------*/
+p.classification span.tags:before {
+    font-family: 'icon_font';
+    content: "\e800";
+}
+
+p.classification span.categories:before {
+    font-family: 'icon_font';
+    content: "\e805";
+}
+
+p.classification span {
+    margin-right: 4px;
+}
+
+p.classification span a {
+    font-size: 14px;
+    padding: 2px 4px;
+    margin-left: 4px;
+    background-color: gray;
+    color: #FFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+p.classification span a:hover {
+    background-color: #555;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.back-to-top {
+    font-family: icon_font;
+    color: gray;
+}
+
+a.back-to-top:hover {
+    font-family: icon_font;
+    text-decoration: none;
+    cursor: pointer;
+    color: #555;
+}
+
+a.back-to-top:before {
+    content: '\e80b';
+}
+
 /* terminal */
 .post pre.terminal {
     border: 1px solid #000;
@@ -327,6 +432,17 @@ a:visited { color: #205caa; }
 .highlight .vi { color: #008080 } /* Name.Variable.Instance */
 .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
 
+/* font-face */
+@font-face {
+    font-family: 'icon_font';
+    src: url('../font/icon_font.eot?60554363');
+    src: url('../font/icon_font.eot?60554363#iefix') format('embedded-opentype'),
+    url('../font/icon_font.woff?60554363') format('woff'),
+    url('../font/icon_font.ttf?60554363') format('truetype'),
+    url('../font/icon_font.svg?60554363#icon_font') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* media queries */
 /* ----------------------------------------------------------*/

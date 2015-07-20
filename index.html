@@ -4,15 +4,41 @@ layout: default
 
 <div class="home">
 
+  <!-- Post list -->
   <ul class="posts">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    {% for post in paginator.posts %}
+      <li class="post">
+	<span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <h2>
+	  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+	</h2>
+	<article class="post-content">
+	  {{ post.content | split:"<!-- more -->" | first | remove: '</p>'}}
+          <span class="excerpt">
+	    <a href="{{ post.url | prepend: site.baseurl }}">
+	      Continue to read the full story...
+	    </a>
+	  </span>
+	</article>
       </li>
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <!-- Pagination links -->
+  <div class="pagination">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path }}" class="previous"></a>
+    {% else %}
+    <span class="previous"></span>
+    {% endif %}
+
+    <span class="page_number ">{{ paginator.page }}/{{ paginator.total_pages }}</span>
+
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next"></a>
+    {% else %}
+    <span class="next "></span>
+    {% endif %}
+  </div>
 
 </div>

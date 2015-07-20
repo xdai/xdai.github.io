@@ -1,7 +1,8 @@
 ---
 title:  "Data alignment on ARM"
 date:   2012-07-03
-categories: "Three Things"
+categories: [ThreeThings]
+tags: [ARM]
 ---
 First of all let’s check the demo code below:
 
@@ -26,6 +27,8 @@ Surprise, isn’t it? Well, let’s check the address of the array
 $ arm-linux-nm tst | grep ReqBuffer
 00010741 B ReqBuffer
 ~~~
+
+<!-- more -->
 
 So, it’s not word-aligned. What if we force it to be aligned on word
 boundary? After modifying line 14 into `uint8_t ReqBuffer[100]

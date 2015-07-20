@@ -1,7 +1,8 @@
 ---
 title:  Definition of INT_MIN
 date:   2015-07-16 00:52
-categories: "Three Things"
+categories: [ThreeThings]
+tags: [C Corner]
 ---
 
 It is well known that a 32bit int can represent integer domain
@@ -14,6 +15,8 @@ find the definition for constant `INT_MIN` and `INT_MAX`:
 weird. Why it is not defined like this:
 
 {% gist xdai/44ce27dd19d314b8a2cf fail_limits.h %}
+
+<!-- more -->
 
 Well, the question arise because of the wide spread confusion between
 `integer constant` and `constant expression`. The C standard says:

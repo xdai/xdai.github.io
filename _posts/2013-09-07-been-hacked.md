@@ -1,7 +1,7 @@
 ---
 title:  Been HACKED!
 date:   2013-09-07
-categories: "Blah Blah"
+categories: [Blah]
 ---
 
 Recently my Kayla development board cannot get correct DHCP address
@@ -25,6 +25,8 @@ compromised, so they blocked it:
 > the campus network. IDS alert data is available below.  Timestamps
 > are local TZ.
 ~~~
+
+<!-- more -->
 
 SH*T! Kayla comes with an factory default Ubuntu. There is a default
 user `ubuntu` with password `ubuntu`, which is indeed **WEAK**. I am

@@ -1,7 +1,8 @@
 ---
 title:  Secure web proxy with squid and chrome (a.k.a. A way to break the GFW)
 date:   2013-03-08
-categories: "Three Things"
+categories: [ThreeThings]
+tags: [GFW, Proxy]
 ---
 
 The well known China Great Firewall (GFW) blocks the access to several
@@ -11,6 +12,8 @@ hardly watch online video streams. So it is not a big trouble for me.
 However, the GFW will cause the infamous TCP RST issue when using
 google. This is unacceptable since it will dramatically decay the
 efficiency of every programmer.
+
+<!-- more -->
 
 Thanks to my wife, I obtained root access to an ubuntu server hosted
 in U.S. and am able to setup a proxy server to break the GFW. The

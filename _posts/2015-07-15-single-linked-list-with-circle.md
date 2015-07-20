@@ -1,7 +1,8 @@
 ---
 title:  Single linked list with circle
 date:   2015-07-15 17:05
-categories: "Three Things"
+categories: [ThreeThings]
+tags: [Algorithm]
 ---
 
 This is a classical interview question, but it is very useful in
@@ -17,6 +18,8 @@ list. `fast` and `slow` advance `m` and `n` steps each time
 respectively, $$m>n>0$$. If `slow` catches up with `fast` before
 `fast` reaches the end of the list, we can claim that there is a
 circle in the list.
+
+<!-- more -->
 
 It is obvious that `slow` will never catch up with `fast` if the list
 has no circle, i.e. $$\lnot\text{Circle}\to\lnot\text{CatchUp}$$. Now

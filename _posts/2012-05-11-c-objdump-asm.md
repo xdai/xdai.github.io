@@ -1,7 +1,8 @@
 ---
 title:  Get assembly / C code map with objdump
 date:   2012-05-11
-categories: "Three Things"
+categories: [ThreeThings]
+tags: [Toolchain]
 ---
 
 We can use `objdump` to disassamble a binary executable. Sometimes it
@@ -23,6 +24,8 @@ that.
 > Label the display (using debugging information) with the filename and
 > source line numbers corresponding to the object code or relocs shown.
 > Only useful with -d, -D, or -r.
+
+<!-- more -->
 
 As long as the application is compiled with `gcc -g`, we can use
 `objdump -S -l` to disassemble the application binary and get the map

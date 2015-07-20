@@ -1,7 +1,8 @@
 ---
 title:  Ternary operator madness
 date:   2015-07-15
-categories: "Three Things"
+categories: [ThreeThings]
+tags: [C Corner]
 ---
 
 Life is full of surprise. Things get even messier with implicit type
@@ -14,6 +15,8 @@ must be true, as well as `(1:-1:1)<0 && (1:-1:1U)<0`. If you believe
 that is the truth here, try it out and you will be surprised. (No I
 will not paste the answer here, try it out by yourself so you can
 remember:)
+
+<!-- more -->
 
 So the problem here is obviously caused by `U`, which is the only
 difference between those two expressions. `-1` and `1` are `int`,

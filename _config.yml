@@ -11,6 +11,9 @@ github_username:  xdai
 markdown: kramdown
 permalink: pretty
 
+# pagination
+paginate: 5
+
 # Front Matter defaults
 defaults:
   -

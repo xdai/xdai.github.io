@@ -1,8 +1,8 @@
 ---
 title:  "linkname, soname and realname"
 date:   2012-07-16
-categories: "Three Things"
-tags: toolchain
+categories: [ThreeThings]
+tags: [Toolchain]
 ---
 
 As you may already know, the linker[^1] option `-l` should be used to
@@ -26,6 +26,8 @@ first one it finds. The directories searched includes several standard
 system directories plus any that you specify with `-L`. We can check
 the directory list with gcc option `-v` when we compile our
 program. `libjpeg.so` here is the *`linkname`* of the library.
+
+<!-- more -->
 
 Now we have get the program compiled successfully, but when we run the
 binary, how could the dynamic linker[^2] find the library installed in
