@@ -22,6 +22,30 @@ a         { color: #2a7ae2; text-decoration: none; }
 a:hover   { color: #000; text-decoration: underline; }
 a:visited { color: #205caa; }
 
+.post-content .table {
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid #D9E4E6;
+}
+
+.table tr {
+    border: 1px solid #D9E4E6;
+}
+
+.table tr:nth-child(odd) {
+    background-color: #EAF3F3;
+}
+
+.table th {
+    background-color: #167F92;
+    color: #FFF;
+    padding: 4px;
+}
+
+.table td {
+    padding: 4px;
+}
+
 /* Utility */
 
 .wrap:before,
