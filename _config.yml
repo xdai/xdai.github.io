@@ -1,15 +1,22 @@
 # Site settings
-title: limitedWish.org
-email: ender.dai@gmail.com
-description: "A limited wish lets you create nearly any type of effect."
-baseurl: ""
-url: "http://git.limitedwish.org"
+title           : limitedWish.org
+email           : Ender Dai <ender.dai@gmail.com>
+description     : "A limited wish lets you create nearly any type of effect."
+baseurl         : ""
+url             : "http://git.limitedwish.org"
 twitter_username: EnderDai
-github_username:  xdai
+github_username : xdai
 
 # Build settings
-markdown: kramdown
-permalink: pretty
+markdown        : kramdown
+permalink       : pretty
+
+include:
+  - _javascript
+
+gems:
+  - jekyll-paginate
+  - jekyll-gist
 
 # pagination
 paginate: 5
@@ -19,9 +26,8 @@ defaults:
   -
     scope:
       path: ""
-      type: "post"
+      type: "posts"
     values:
       layout: "post"
       author: "Ender Dai"
 
-theme: jekyll-theme-cayman

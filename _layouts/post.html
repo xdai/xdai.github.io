@@ -1,48 +1,58 @@
 ---
-layout: default
+layout: content-page
 ---
-<div class="post">
+<div class="site-content">
+  <div class="wrapper">
 
-  <header class="post-header">
-    <h1>{{ page.title }}</h1>
-    <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-  </header>
+    <article class="post-content">
+      <!--- Date and Author --->
+      <header>
+	{{ page.date | date: "%b %-d %Y" }}
+	{% if page.author %} • {{ page.author }}{% endif %}
+	{% if page.meta %} • {{ page.meta }}{% endif %}
+      </header>
 
-  <article class="post-content">
-  {{ content }}
-  </article>
+      <!--- Post Content --->
+      <h1>{{ page.title }}</h1>
+      {{ content }}
 
-  <!--- Categories and Tags --->
-  <p class="classification">
-    {% if page.categories != empty %}
-    <span class="categories">
-      {% for cat in page.categories %}
-      <a href="/categories/#{{cat}}">{{cat}}</a>
-      {% endfor %}
-    </span>
-    {% endif %}
+      <!--- Categories and Tags --->
+      <footer>
+	{% if page.categories != empty %}
+	<span icon-before="&#xe805">
+	  {% for cat in page.categories %}
+	  <a class="category" href="{{site.baseurl}}/categories/#{{cat}}">{{cat}}</a>
+	  {% endfor %}
+	</span>
+	{% endif %}
 
-    {% if page.tags != empty %}
-    <span class="tags">
-      {% for tag in page.tags %}
-      <a href="/tags/#{{tag}}">{{tag}}</a>
-      {% endfor %}
-    </span>
-    {% endif %}
-  </p>
+	{% if page.tags != empty %}
+	<span icon-before="&#xe804">
+	  {% for tag in page.tags %}
+	  <a class="tag" href="{{site.baseurl}}/tags/#{{tag}}">{{tag}}</a>
+	  {% endfor %}
+	</span>
+	{% endif %}
+      </footer>
+    </article>
 
-</div>
+    <div class="pager">
+      {% if page.previous != nil %}
+      <a class="prev" href={{site.baseurl}}{{page.previous.url}} icon-before="&#xe80c">
+	{{page.previous.title | truncate: 30, "..."}}
+      </a>
+      {% else %}
+      <span></span>
+      {% endif %}
 
-<div class="pager">
-  {% if page.next != nil %}
-  <a class="next" href={{page.next.url}}>
-    {{page.next.title | truncate: 30, "..."}}
-  </a>
-  {% endif %}
+      {% if page.next != nil %}
+      <a class="next" href={{site.baseurl}}{{page.next.url}} icon-after="&#xe80d">
+	{{page.next.title | truncate: 30, "..."}}
+      </a>
+      {% else %}
+      <span></span>
+      {% endif %}
+    </div>
 
-  {% if page.previous != nil %}
-  <a class="prev" href={{page.previous.url}}>
-    {{page.previous.title | truncate: 30, "..."}}
-  </a>
-  {% endif %}
+  </div>
 </div>

@@ -1,35 +1,28 @@
 ---
-layout: page
-title: Categories
-permalink: /categories/
+layout    : page
+title     : Categories
+permalink : /categories/
 ---
 
 {% assign sorted_cats = site.categories | sort %}
 
-<p class="classification">
-  <a name="categories"></a>
-  <span class="categories">
-
-    {% for cat in sorted_cats %}
-    {% assign name  = cat | first %}
-    {% assign posts = cat | last %}
-    <a href="#{{name}}">{{name}}</a>
-    {% endfor %}
-
-  </span>
+<p id="categories" icon-before="&#xe805">
+  {% for cat in sorted_cats %}
+  {% assign name  = cat | first %}
+  <a href="#{{name}}" class="category">{{name}}</a>
+  {% endfor %}
 </p>
 
 {% for cat in sorted_cats %}
 {% assign name  = cat | first %}
 {% assign posts = cat | last %}
-<a name="{{name}}"></a>
-<h2>
+<h2 id="{{name}}">
   {{name}}
-  <a class="back-to-top" href="#categories"></a>
+  <a class="back-to-top" href="#categories" icon-before="&#xe80b"></a>
 </h2>
 <ol>
   {% for post in posts %}
-  <li><a href="{{post.url}}">{{post.title}}</a></li>
+  <li><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></li>
   {% endfor %}
 </ol>
 {% endfor %}

@@ -1,44 +1,59 @@
 ---
-layout: default
+layout: front-page
 ---
 
-<div class="home">
+<div class="site-content">
+  <div class="wrapper">
 
-  <!-- Post list -->
-  <ul class="posts">
+    <!-- Post list -->
     {% for post in paginator.posts %}
-      <li class="post">
-	<span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <h2>
-	  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-	</h2>
-	<article class="post-content">
-	  {{ post.content | split:"<!-- more -->" | first | remove: '</p>'}}
-          <span class="excerpt">
-	    <a href="{{ post.url | prepend: site.baseurl }}">
-	      Continue to read the full story...
-	    </a>
-	  </span>
-	</article>
-      </li>
+    <article class="post-content">
+      <div class="meta">
+	<p>{{ post.date | date: "%b %-d %Y" }}</p>
+	<p>{% if post.author %}{{ post.author }}{% endif %}</p>
+	{% if post.meta %}{{ post.meta }}{% endif %}
+
+	<div class="toggle">
+	  {% if page.categories != empty %}
+	  <p icon-before="&#xe805">
+	    {% for cat in post.categories %}
+	    <a class="category" href="{{site.baseurl}}/categories/#{{cat}}">{{cat}}</a>
+	    {% endfor %}
+	  </p>
+	  {% endif %}
+
+	  {% if post.tags != empty %}
+	  <p icon-before="&#xe804">
+	    {% for tag in post.tags %}
+	    <a class="tag" href="{{site.baseurl}}/tags/#{{tag}}">{{tag}}</a>
+	    {% endfor %}
+	  </p>
+	  {% endif %}
+	</div>
+      </div>
+
+      <h1><a href="{{site.baseurl}}{{post.url}}"> {{ post.title }} </a></h1>
+
+      {{ post.content }}
+    </article>
     {% endfor %}
-  </ul>
 
-  <!-- Pagination links -->
-  <div class="pagination">
-    {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path }}" class="previous"></a>
-    {% else %}
-    <span class="previous"></span>
-    {% endif %}
+    <!-- Pagination links -->
+    <div class="pagination">
+      {% if paginator.previous_page %}
+      <a href="{{site.baseurl}}{{paginator.previous_page_path}}" icon-before="&#xE808"></a>
+      {% else %}
+      <span class="previous" icon-before="&#xE808"></span>
+      {% endif %}
 
-    <span class="page_number ">{{ paginator.page }}/{{ paginator.total_pages }}</span>
+      <span class="page-number ">{{ paginator.page }}/{{ paginator.total_pages }}</span>
 
-    {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path }}" class="next"></a>
-    {% else %}
-    <span class="next "></span>
-    {% endif %}
+      {% if paginator.next_page %}
+      <a href="{{site.baseurl}}{{paginator.next_page_path}}" icon-after="&#xE809"></a>
+      {% else %}
+      <span class="next" icon-after="&#xE809"></span>
+      {% endif %}
+    </div>
+
   </div>
-
 </div>

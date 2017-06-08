@@ -1,0 +1,36 @@
+$page-max-width: 50rem;
+$logo-size: 50px;
+
+// Breakpoints
+$large-breakpoint: 64em !default;
+$medium-breakpoint: 42em !default;
+
+// Headers
+$header-heading-color: hsla(0,0%,100%,.8) !default;
+$header-bg-color: #171f26 !default;
+$header-nav-highlight: #1094e8 !default;
+
+// Body
+$body-bg-color: #fafafa;
+$body-text-color: #000000 !default;
+$body-link-color: #1e6bb8 !default;
+
+// Site Footer
+$footer-bg-color: #171f26 !default;
+$footer-height-large: 3rem;
+$footer-height-medium: 3rem;
+$footer-height-small: 2rem;
+
+// Text
+$section-headings-color: #159957 !default;
+$blockquote-text-color: #819198 !default;
+$meta-text-color: #606c71 !default;
+
+// Code
+$code-bg-color: #f3f6fa !default;
+$code-text-color: #567482 !default;
+
+// Borders
+$border-color: #dce6f0 !default;
+$table-border-color: #e9ebec !default;
+$hr-border-color: #eff0f1 !default;

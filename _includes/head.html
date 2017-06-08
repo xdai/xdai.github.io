@@ -6,12 +6,27 @@
     <meta name="description" content="{{ site.description }}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+    <!-- jQuery -->
+    <script
+       src="https://code.jquery.com/jquery-3.2.1.min.js"
+       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+       crossorigin="anonymous">
+    </script>
 
     <!-- MathJax -->
-    <script type="text/javascript"
-        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Anaheim|Cousine' rel='stylesheet'>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{site.baseurl}}/css/style.css">
+
+    <script
+       type="text/javascript"
+       src="{{site.baseurl}}/_javascript/index.js">
     </script>
 
 </head>

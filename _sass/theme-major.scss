@@ -1,0 +1,519 @@
+@import "normalize";
+@import "rouge-github";
+@import "variables";
+
+@mixin large {
+    @media screen and (min-width: #{$large-breakpoint}) {
+	@content;
+    }
+}
+
+@mixin medium {
+    @media screen and (min-width: #{$medium-breakpoint}) and (max-width: #{$large-breakpoint}) {
+	@content;
+    }
+}
+
+@mixin small {
+    @media screen and (max-width: #{$medium-breakpoint}) {
+	@content;
+    }
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin title-link($color, $hover-color) {
+    color: $color;
+    text-decoration: none;
+
+    &:hover {
+	color: $hover-color;
+    }
+}
+
+/* font-face */
+@font-face {
+    font-family: 'icon_font';
+    src: url('../font/icon_font.eot?60554363');
+    src: url('../font/icon_font.eot?60554363#iefix') format('embedded-opentype'),
+    url('../font/icon_font.woff?60554363') format('woff'),
+    url('../font/icon_font.ttf?60554363') format('truetype'),
+    url('../font/icon_font.svg?60554363#icon_font') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Anaheim, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $body-text-color;
+    background-color: $body-bg-color;
+}
+
+[icon-before]:before {
+    font-family: 'icon_font';
+    content: attr(icon-before);
+}
+
+[icon-after]:after {
+    font-family: 'icon_font';
+    content: attr(icon-after);
+}
+
+/**
+ * 1. Enable absolute position of .site-footer
+ * 2. Stay the full height of the screen even if there is hardly any content
+ */
+.top-level-container {
+    position: relative; /* 1 */
+    min-height: 100%;   /* 2 */
+}
+
+.wrapper {
+    padding: 0 10px;
+    @include large {
+	max-width: $page-max-width;
+	margin: 0 auto;
+    }
+}
+
+.site-header {
+    background-color: $header-bg-color;
+    padding: 1rem 0;
+
+    a {
+	@include title-link($header-heading-color, $header-nav-highlight);
+	margin-right: 1rem;
+    }
+
+    .site-header-inner {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+
+	.site-logo-wrap {
+	    flex: 0 $logo-size;
+
+	    /**
+	     * 1. Hide the text by pushing it out of viewport
+	     */
+	    .site-logo {
+		display: block;
+		width: $logo-size;
+		height: $logo-size;
+		@include border-radius(50%);
+		background: url("/logo.png");
+		background-size: contain;
+
+		text-indent: 101%;  /* 1 */
+		overflow: hidden;
+		white-space:nowrap;
+	    }
+	}
+
+	.site-nav {
+	    flex: 1 auto;
+
+	    @include large {
+		font-size: 1.0rem;
+	    }
+
+	    @include medium {
+		font-size: 0.9rem;
+	    }
+
+	    @include small {
+		font-size: 0.8rem;
+	    }
+	}
+    }
+}
+
+.site-banner {
+    background-color: $header-bg-color;
+    text-align: center;
+    padding: 2rem 0 5rem 0;
+
+    @include large {
+	font-size: 3.25rem;
+    }
+
+    @include medium {
+	font-size: 2.25rem;
+    }
+
+    @include small {
+	font-size: 1.75rem;
+    }
+
+    a {
+	@include title-link($header-heading-color, $header-heading-color);
+    }
+}
+
+.site-content {
+    word-wrap: break-word;
+
+    @include large {
+	padding-bottom: $footer-height-large;
+	font-size: 1.1rem;
+    }
+
+    @include medium {
+	padding-bottom: $footer-height-medium;
+	font-size: 1.1rem;
+    }
+
+    @include small {
+	padding-bottom: $footer-height-small;
+	font-size: 1rem;
+    }
+
+    a {
+	color: $body-link-color;
+	text-decoration: none;
+
+	&:hover {
+	    text-decoration: underline;
+	}
+    }
+
+    img {
+	max-width: 100%;
+    }
+
+    article {
+	position: relative;
+	margin-top: 1rem;
+	background-color: white;
+	padding: 0 1rem 1rem 1rem;
+	border-bottom: solid 2px rgba(144, 144, 144, 0.25);
+
+	@include large {
+	    @include border-radius(10px);
+	}
+
+	.meta {
+	    position: absolute;
+	    top: 0;
+	    right: 100%;
+
+	    padding-right: 10px;
+	    border-right: gray solid 10px;
+	    margin-right: 20px;
+	    white-space: nowrap;
+
+	    font-size: 1rem;
+	    line-height: 1.5;
+	    color: $meta-text-color;
+
+	    p {
+		margin: 0;
+		text-align: right;
+	    }
+
+	    .toggle {
+		display: none;
+	    }
+	}
+    }
+
+    header {
+	font-size: 1rem;
+	color: #818181;
+    }
+
+    h1 {
+	margin: 0;
+	font-weight: normal;
+	color: $section-headings-color;
+
+	a {
+	    color: $section-headings-color;
+	    &:hover {
+		text-decoration: none;
+		cursor: pointer;
+	    }
+	}
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	font-weight: normal;
+	color: $section-headings-color;
+    }
+
+    p {
+	margin-bottom: 1em;
+    }
+
+    a.back-to-top {
+	color: gray;
+
+	&:hover {
+	    text-decoration: none;
+	    cursor: pointer;
+	    color: #555;
+	}
+    }
+
+    a.tag,
+    a.category {
+	font-size: 14px;
+	padding: 2px 4px;
+	margin-left: 4px;
+	background-color: gray;
+	color: #FFF;
+	@include border-radius(3px);
+
+	&:hover {
+	    background-color: #555;
+	    text-decoration: none;
+	    cursor: pointer;
+	}
+    }
+
+    code {
+	padding: 2px 4px;
+	font-family: Cousine, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	font-size: 0.9rem;
+	color: $code-text-color;
+	background-color: $code-bg-color;
+	border-radius: 0.3rem;
+    }
+
+    pre {
+	padding: 0.8rem;
+	margin-top: 0;
+	margin-bottom: 1rem;
+	font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	color: $code-text-color;
+	word-wrap: normal;
+	background-color: $code-bg-color;
+	border: solid 1px $border-color;
+	border-radius: 0.3rem;
+
+	> code {
+	    padding: 0;
+	    margin: 0;
+	    font-size: 0.9rem;
+	    color: $code-text-color;
+	    word-break: normal;
+	    white-space: pre;
+	    background: transparent;
+	    border: 0;
+	}
+    }
+
+    .highlight {
+	margin-bottom: 1rem;
+
+	pre {
+	    margin-bottom: 0;
+	    word-break: normal;
+	}
+    }
+
+    .highlight pre,
+    pre {
+	padding: 0.8rem;
+	overflow: auto;
+	font-size: 0.9rem;
+	line-height: 1.45;
+	border-radius: 0.3rem;
+	-webkit-overflow-scrolling: touch;
+    }
+
+    pre code,
+    pre tt {
+	display: inline;
+	max-width: initial;
+	padding: 0;
+	margin: 0;
+	overflow: initial;
+	line-height: inherit;
+	word-wrap: normal;
+	background-color: transparent;
+	border: 0;
+
+	&:before,
+	&:after {
+	    content: normal;
+	}
+    }
+
+    ul,
+    ol {
+	margin-top: 0;
+    }
+
+    blockquote {
+	padding: 0 1rem;
+	margin-left: 0;
+	color: $blockquote-text-color;
+	border-left: 0.3rem solid $border-color;
+
+	> :first-child {
+	    margin-top: 0;
+	}
+
+	> :last-child {
+	    margin-bottom: 0;
+	}
+    }
+
+    table {
+	display: block;
+	width: 100%;
+	overflow: auto;
+	word-break: normal;
+	word-break: keep-all; // For Firefox to horizontally scroll wider tables.
+	-webkit-overflow-scrolling: touch;
+
+	th {
+	    font-weight: bold;
+	}
+
+	th,
+	td {
+	    padding: 0.5rem 1rem;
+	    border: 1px solid $table-border-color;
+	}
+    }
+
+    dl {
+	padding: 0;
+
+	dt {
+	    padding: 0;
+	    margin-top: 1rem;
+	    font-size: 1rem;
+	    font-weight: bold;
+	}
+
+	dd {
+	    padding: 0;
+	    margin-bottom: 1rem;
+	}
+    }
+
+    hr {
+	height: 2px;
+	padding: 0;
+	margin: 1rem 0;
+	background-color: $hr-border-color;
+	border: 0;
+    }
+
+    .pager {
+	display: flex;
+	justify-content: space-between;
+	color: #2a7ae2;
+	padding: 10px 0;
+
+	@include medium {
+	    font-size: 1rem;
+	}
+
+	@include small {
+	    font-size: 0.7rem;
+	}
+
+	a {
+	    &:hover {
+		text-decoration: none;
+	    }
+	}
+    }
+
+    .pagination {
+	font-size: 1.5rem;
+	text-align: center;
+
+	a {
+	    display: inline-block;
+	    color: #2a7ae2;
+	    width: 36px;
+	    height: 36px;
+	    line-height:36px;
+
+	    &:hover {
+		text-decoration: none;
+		cursor: pointer;
+		@include border-radius(50%);
+		background-color: #2a7ae2;
+		color: #FFF;
+	    }
+	}
+	span {
+	    display: inline-block;
+	    color: gray;
+	    width: 36px;
+	    height: 36px;
+	    line-height:36px;
+	}
+
+    }
+}
+
+/**
+ * 1. Put the footer at the page bottom
+ */
+.site-footer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    bottom: 0;   /* 1 */
+    background-color: $header-bg-color;
+
+    @include large {
+	height: $footer-height-large;
+	padding: 1rem 0;
+	font-size: 1rem;
+    }
+
+    @include medium {
+	height: $footer-height-medium;
+	padding: 0.8rem 0;
+	font-size: 0.8rem;
+    }
+
+    @include small {
+	height: $footer-height-small;
+	padding: 0.6rem 0;
+	font-size: 0.6rem;
+    }
+
+    a {
+	color: gray;
+	text-decoration: none;
+
+	&:hover {
+	    text-decoration: none;
+	}
+    }
+}
