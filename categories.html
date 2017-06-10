@@ -6,7 +6,8 @@ permalink : /categories/
 
 {% assign sorted_cats = site.categories | sort %}
 
-<p id="categories" icon-before="&#xe805">
+<p id="categories">
+  <i class="fa fa-folder-o"></i>
   {% for cat in sorted_cats %}
   {% assign name  = cat | first %}
   <a href="#{{name}}" class="category">{{name}}</a>
@@ -18,7 +19,7 @@ permalink : /categories/
 {% assign posts = cat | last %}
 <h2 id="{{name}}">
   {{name}}
-  <a class="back-to-top" href="#categories" icon-before="&#xe80b"></a>
+  <a class="back-to-top" href="#categories"><i class="fa fa-long-arrow-up"></i></a>
 </h2>
 <ol>
   {% for post in posts %}

@@ -6,7 +6,8 @@ permalink : /tags/
 
 {% assign sorted_tags = site.tags | sort %}
 
-<p id="tags" icon-before="&#xe800">
+<p id="tags">
+  <i class="fa fa-tags"></i>
   {% for tag in sorted_tags %}
   {% assign name  = tag | first %}
   <a href="#{{name}}" class="tag">{{name}}</a>
@@ -18,7 +19,7 @@ permalink : /tags/
 {% assign posts = tag | last %}
 <h2 id="{{name}}">
   {{name}}
-  <a class="back-to-top" href="#tags" icon-before="&#xe80b"></a>
+  <a class="back-to-top" href="#tags"><i class="fa fa-long-arrow-up"></i></a>
 </h2>
 <ol>
   {% for post in posts %}
