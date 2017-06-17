@@ -34,3 +34,11 @@ $code-text-color: #567482 !default;
 $border-color: #dce6f0 !default;
 $table-border-color: #e9ebec !default;
 $hr-border-color: #eff0f1 !default;
+
+// Mobile Menu
+$mobile-menu-size: 3rem;
+$mobile-menu-btn-color: rgba(217, 35, 15, 0.85);
+$mobile-ring-size: 200px;
+$mobile-ring-bg-color: rgba(217, 35, 15, 0.85);
+$mobile-btn-x-color: rgb(217, 35, 15);
+$mobile-btn-x-size: $mobile-ring-size / 3;

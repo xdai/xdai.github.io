@@ -1,0 +1,48 @@
+@mixin large {
+    @media screen and (min-width: #{$large-breakpoint}) {
+	@content;
+    }
+}
+
+@mixin medium {
+    @media screen and (min-width: #{$medium-breakpoint}) and (max-width: #{$large-breakpoint}) {
+	@content;
+    }
+}
+
+@mixin small {
+    @media screen and (max-width: #{$medium-breakpoint}) {
+	@content;
+    }
+}
+
+@mixin transform-origin($x, $y) {
+    -webkit-transform-origin: $x $y;
+    transform-origin: $x $y;
+}
+
+@mixin transform($var...) {
+    -webkit-transform: $var;
+    transform: $var;
+}
+
+@mixin transition($var...) {
+    -webkit-transition: $var;
+    transition: $var;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin title-link($color, $hover-color) {
+    color: $color;
+    text-decoration: none;
+
+    &:hover {
+	color: $hover-color;
+    }
+}

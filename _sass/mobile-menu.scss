@@ -1,0 +1,119 @@
+@mixin ring-child($n, $total) {
+    li:nth-child(#{$n}) {
+	width: $mobile-ring-size / 2;
+	height: $mobile-ring-size / 2;
+	background-color: $mobile-ring-bg-color;
+	background-color-opacity: 0.85;
+	color: rgba(255, 255, 255, 0.85);
+	border-left: 2px solid rgba(255, 255, 255, 0.85);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+	
+	position: absolute;
+	top: 0;
+	right: 0;
+	
+	cursor: pointer;
+
+	transform-origin: bottom left;
+	transform: rotate(360deg / $total * ($n - 1) - (90deg - 180deg / $total))  skew(#{360 / $total - 90}deg);
+
+	i {
+            position: absolute;
+            left: 2rem;
+            bottom: 2rem;
+            
+	    transform: skew(#{90 - 360 / $total}deg) rotate((90deg - 180deg / $total) - 360deg / $total * ($n - 1));
+	}
+    }    
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+#mobile-widget {
+    #mobile-overlay {
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(20, 20, 20, 0.3);
+	// z-index: 9999;
+    }
+
+    #mobile-menu-o {
+	width: $mobile-ring-size;
+	height: $mobile-ring-size;
+	@include border-radius(50%);
+	overflow: hidden;
+
+	position: fixed;
+	right: 20px;
+	bottom: 40px;
+
+	@include transform-origin(100%, 100%);
+	@include transition(all .2s ease 0s);
+	@include transform(translate3d(0, 0, 0) scale(0.1));
+	
+	opacity: 0;
+	display: none;
+	will-change: transform;
+
+	ul {
+	    list-style-type: none;
+	    @include ring-child(1, 5);
+	    @include ring-child(2, 5);
+	    @include ring-child(3, 5);
+	    @include ring-child(4, 5);
+	    @include ring-child(5, 5);
+	}
+
+	#mobile-menu-btn-x {
+	    position: absolute;
+	    top: ($mobile-ring-size - $mobile-btn-x-size) / 2;
+	    left: ($mobile-ring-size - $mobile-btn-x-size) / 2;
+	    width: $mobile-btn-x-size;
+	    height: $mobile-btn-x-size;
+	    background-color: $mobile-btn-x-color;
+	    border-radius: 50%;
+	    border: 2px solid white;
+	    color: white;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    cursor: pointer;
+	}
+    }
+
+    #mobile-menu {
+	position: fixed;
+	right: 20px;
+	bottom: 40px;
+
+	@include large {
+	    display: none;
+	}
+
+	@include medium {
+	    display: none;
+	}
+
+	@include small {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+
+	width: $mobile-menu-size;
+	height: $mobile-menu-size;
+	@include border-radius(50%);
+
+	background-color: $mobile-menu-btn-color;
+	cursor: pointer;
+	color: rgba(255, 255, 255, 0.85);
+
+	font-size: 1.8rem;
+    }
+}
